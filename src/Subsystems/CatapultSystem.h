@@ -7,15 +7,21 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/Subsystem.h>
+#include <CTRE/Phoenix.h>
+#include <WPILib.h>
 
-class DriveForward : public frc::Command {
+class CatapultSystem: public frc::Subsystem {
+private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
+	TalonSRX* winchMotor;
+	DoubleSolenoid* releasePiston;
 public:
-	DriveForward();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+	CatapultSystem();
+	void InitDefaultCommand() override;
+	void pullBack(float power);
+	void resetPiston();
+	void firePiston();
 };
 

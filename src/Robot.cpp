@@ -11,7 +11,8 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 DriveSystem* Robot::driveSystem = new DriveSystem();
-LiftSystem* Robot::liftSystem = new LiftSystem();
+CatapultSystem* Robot::catapultSystem = new CatapultSystem();
+IntakeSystem* Robot::intakeSystem = new IntakeSystem();
 OI* Robot::oi = new OI();
 
 void Robot::RobotInit() {
@@ -23,9 +24,6 @@ void Robot::RobotInit() {
 	m_chooser.AddObject("FWD Two Seconds", new ForwardMotor(2.0));
 	m_chooser.AddObject("REV Two Seconds", new ReverseMotor(2.0));
 	m_chooser.AddObject("FWD 1, REV 3", new ForwardThenReverse(1.0, 3.0));
-	m_chooser.AddObject("Lift Up", new LiftUp());
-	m_chooser.AddObject("Lift Down", new LiftDown());
-	m_chooser.AddObject("Lift Up Then Down", new LiftUpThenDown());
 	frc::SmartDashboard::PutData("My Auto Mode Chooser", &m_chooser);
 	//frc::SmartDashboard::PutData(driveSystem);
 }
@@ -91,11 +89,13 @@ void Robot::TeleopInit() {
 		m_autoCommand = nullptr;
 	}
 
+	DriveByJoystick* teleopDrive = new DriveByJoystick();
+
 	printf("-- TeleopInit()\n");
-	m_driveByJoystick.reset(new DriveByJoystick());
+	//m_driveByJoystick.reset(new DriveByJoystick());
 
 	printf("-- Start Command\n");
-	m_driveByJoystick->Start();
+	teleopDrive->Start();
 }
 
 void Robot::TeleopPeriodic() {

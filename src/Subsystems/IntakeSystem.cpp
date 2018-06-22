@@ -5,18 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "IntakeSystem.h"
+#include "../RobotMap.h"
 
-#include <Commands/Command.h>
-#include <oi.h>
+IntakeSystem::IntakeSystem() : Subsystem("IntakeSystem") {
 
-class LiftUp : public frc::Command {
-public:
-	LiftUp();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-};
+}
 
+void IntakeSystem::InitDefaultCommand() {
+	// Set the default command for a subsystem here.
+	// SetDefaultCommand(new MySpecialCommand());
+}
+
+// Put methods for controlling this subsystem
+// here. Call these from Commands.

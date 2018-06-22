@@ -15,10 +15,10 @@ class DriveSystem : public frc::Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-//	TalonSRX* frontLeftMotor;
+	TalonSRX* frontLeftMotor;
 	TalonSRX* rearLeftMotor;
-//	TalonSRX* frontRightMotor;
-//	TalonSRX* rearRightMotor;
+	TalonSRX* frontRightMotor;
+	TalonSRX* rearRightMotor;
 
 public:
 	DriveSystem();

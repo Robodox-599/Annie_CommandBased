@@ -11,7 +11,6 @@
 class OI {
 public:
 	OI();
-	Joystick* getJoystick();
 	Joystick* joy;
 };
 

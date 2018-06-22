@@ -5,42 +5,35 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "DriveByJoystick.h"
-#include "../Robot.h"
+#include "IntakeDown.h"
 
-DriveByJoystick::DriveByJoystick() {
+IntakeDown::IntakeDown() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::driveSystem);
 }
 
 // Called just before this Command runs the first time
-void DriveByJoystick::Initialize() {
+void IntakeDown::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveByJoystick::Execute() {
+void IntakeDown::Execute() {
 
-//	double x = Robot::m_oi.getJoystick()->GetRawAxis(0);
-//	double y = Robot::m_oi.getJoystick()->GetRawAxis(1);
-	Robot::driveSystem->JoystickDrive(Robot::oi->joy->GetRawAxis(0), Robot::oi->joy->GetRawAxis(1));
-
-	frc::SmartDashboard::PutNumber("Joy Y", Robot::oi->joy->GetRawAxis(1));
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveByJoystick::IsFinished() {
+bool IntakeDown::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveByJoystick::End() {
-	Robot::driveSystem->JoystickDrive(0,0);
+void IntakeDown::End() {
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveByJoystick::Interrupted() {
-	End();
+void IntakeDown::Interrupted() {
+
 }

@@ -13,20 +13,19 @@
 #include <Commands/ForwardThenReverse.h>
 #include <Commands/DriveByJoystick.h>
 #include <Commands/Pause.h>
-#include <Commands/LiftUp.h>
-#include <Commands/LiftDown.h>
-#include <Commands/LiftUpThenDown.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
 
 #include "OI.h"
 #include "Subsystems/DriveSystem.h"
-#include "Subsystems/LiftSystem.h"
+#include "Subsystems/CatapultSystem.h"
+#include "Subsystems/IntakeSystem.h"
 
 class Robot : public frc::TimedRobot {
 public:
 	static DriveSystem* driveSystem;
-	static LiftSystem* liftSystem;
+	static CatapultSystem* catapultSystem;
+	static IntakeSystem* intakeSystem;
 	static OI* oi;
 
 	void RobotInit() override;
@@ -44,5 +43,5 @@ private:
 	std::unique_ptr<frc::Command> m_autoCommand;
 	frc::SendableChooser<frc::Command*> m_chooser;
 
-	std::unique_ptr<frc::Command> m_driveByJoystick;
+	//std::unique_ptr<frc::Command> m_driveByJoystick;
 };

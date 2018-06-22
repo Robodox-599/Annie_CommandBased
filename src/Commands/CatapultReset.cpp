@@ -5,38 +5,37 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "LiftDown.h"
+#include "CatapultReset.h"
 #include "../Robot.h"
 
-LiftDown::LiftDown() {
+CatapultReset::CatapultReset() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::liftSystem);
+	Requires(Robot::catapultSystem);
 }
 
 // Called just before this Command runs the first time
-void LiftDown::Initialize() {
-	SetTimeout(3.0);
-	Robot::liftSystem->RunLift(-1);
+void CatapultReset::Initialize() {
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LiftDown::Execute() {
+void CatapultReset::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LiftDown::IsFinished() {
-	return IsTimedOut();
+bool CatapultReset::IsFinished() {
+	return false;
 }
 
 // Called once after isFinished returns true
-void LiftDown::End() {
-	Robot::liftSystem->RunLift(0);
+void CatapultReset::End() {
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LiftDown::Interrupted() {
+void CatapultReset::Interrupted() {
 	End();
 }

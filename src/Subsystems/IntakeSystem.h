@@ -7,10 +7,17 @@
 
 #pragma once
 
-#include <Commands/CommandGroup.h>
+#include <Commands/Subsystem.h>
+#include <CTRE/Phoenix.h>
+#include <WPILib.h>
 
-class LiftUpThenDown : public frc::CommandGroup {
+class IntakeSystem : public frc::Subsystem {
+private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
+
 public:
-	LiftUpThenDown();
+	IntakeSystem();
+	void InitDefaultCommand() override;
 };
 

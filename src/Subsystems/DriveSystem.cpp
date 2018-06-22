@@ -9,15 +9,15 @@
 #include "../RobotMap.h"
 
 DriveSystem::DriveSystem() : Subsystem("DriveSystem") {
-	//frontLeftMotor = new TalonSRX(1);
-	rearLeftMotor = new TalonSRX(2);
-	//frontRightMotor = new TalonSRX(3);
-	//rearRightMotor = new TalonSRX(4);
+	frontLeftMotor = new TalonSRX(4);
+	rearLeftMotor = new TalonSRX(5);
+	frontRightMotor = new TalonSRX(0);
+	rearRightMotor = new TalonSRX(1);
 
-	//frontLeftMotor->SetInverted(false);
+	frontLeftMotor->SetInverted(false);
 	rearLeftMotor->SetInverted(false);
-	//frontRightMotor->SetInverted(true);
-	//rearRightMotor->SetInverted(true);
+	frontRightMotor->SetInverted(true);
+	rearRightMotor->SetInverted(true);
 }
 
 void DriveSystem::InitDefaultCommand() {

@@ -5,23 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "LiftSystem.h"
-#include "../RobotMap.h"
+#pragma once
 
-LiftSystem::LiftSystem() : Subsystem("LiftSystem") {
-	liftMotor = new TalonSRX(4);
-	liftMotor->SetInverted(false);
-}
+#include <Commands/Command.h>
 
-void LiftSystem::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
-}
+class CatapultReset : public frc::Command {
+public:
+	CatapultReset();
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
+};
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
-void LiftSystem::RunLift(float power)
-{
-	liftMotor->Set(ControlMode::PercentOutput, power/15);
-}

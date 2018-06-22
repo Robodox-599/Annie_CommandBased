@@ -8,11 +8,10 @@
 #pragma once
 
 #include <Commands/Command.h>
-#include <oi.h>
 
-class LiftDown : public frc::Command {
+class IntakeDown : public frc::Command {
 public:
-	LiftDown();
+	IntakeDown();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

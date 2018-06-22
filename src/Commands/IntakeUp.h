@@ -5,12 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "OI.h"
+#pragma once
 
-OI::OI() {
-	joy = new Joystick(1);
-	JoystickButton* Button1 = new JoystickButton(joy, 1);
-	JoystickButton* Button2 = new JoystickButton(joy, 2);
+#include <Commands/Command.h>
 
-	// Process operator interface input here.
-}
+class IntakeUp : public frc::Command {
+public:
+	IntakeUp();
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
+};
+
