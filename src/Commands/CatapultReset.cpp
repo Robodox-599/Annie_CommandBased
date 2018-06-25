@@ -16,7 +16,8 @@ CatapultReset::CatapultReset() {
 
 // Called just before this Command runs the first time
 void CatapultReset::Initialize() {
-
+	Robot::catapultSystem->ResetPiston();
+	Robot::catapultSystem->PullBack(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -26,12 +27,12 @@ void CatapultReset::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool CatapultReset::IsFinished() {
-	return false;
+	return Robot::catapultSystem->GetLimitSwitch();
 }
 
 // Called once after isFinished returns true
 void CatapultReset::End() {
-
+	Robot::catapultSystem->PullBack(0);
 }
 
 // Called when another command which requires one or more of the same

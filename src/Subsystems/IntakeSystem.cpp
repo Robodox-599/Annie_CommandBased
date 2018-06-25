@@ -19,3 +19,18 @@ void IntakeSystem::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+void IntakeSystem::IntakeDown()
+{
+
+}
+
+void IntakeSystem::IntakeUp()
+{
+
+}
+
+void IntakeSystem::IntakeRoll()
+{
+
+}

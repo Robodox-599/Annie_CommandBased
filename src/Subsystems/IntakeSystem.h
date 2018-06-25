@@ -19,5 +19,8 @@ private:
 public:
 	IntakeSystem();
 	void InitDefaultCommand() override;
+	void IntakeDown();
+	void IntakeUp();
+	void IntakeRoll();
 };
 

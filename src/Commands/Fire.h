@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include <oi.h>
 
 class Fire : public frc::Command {
 public:

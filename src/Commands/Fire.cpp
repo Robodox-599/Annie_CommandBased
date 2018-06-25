@@ -6,15 +6,17 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Fire.h"
+#include "../Robot.h"
 
 Fire::Fire() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::catapultSystem);
 }
 
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-
+	Robot::catapultSystem->FirePiston();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,7 +26,7 @@ void Fire::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
@@ -35,5 +37,5 @@ void Fire::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Fire::Interrupted() {
-
+	End();
 }

@@ -17,11 +17,13 @@ private:
 	// for methods that implement subsystem capabilities
 	TalonSRX* winchMotor;
 	DoubleSolenoid* releasePiston;
+	DigitalInput* catapultLimit;
 public:
 	CatapultSystem();
 	void InitDefaultCommand() override;
-	void pullBack(float power);
-	void resetPiston();
-	void firePiston();
+	void PullBack(float power);
+	void ResetPiston();
+	void FirePiston();
+	bool GetLimitSwitch();
 };
 

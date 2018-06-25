@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include <oi.h>
 
 class CatapultReset : public frc::Command {
 public:

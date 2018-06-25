@@ -13,6 +13,7 @@
 CatapultSystem::CatapultSystem() : Subsystem("CatapultSystem") {
 	winchMotor = new TalonSRX(3);
 	releasePiston = new DoubleSolenoid(5, 6);
+	catapultLimit = new DigitalInput(8);
 }
 
 void CatapultSystem::InitDefaultCommand() {
@@ -22,17 +23,22 @@ void CatapultSystem::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void CatapultSystem::pullBack(float power)
+void CatapultSystem::PullBack(float power)
 {
 	winchMotor->Set(ControlMode::PercentOutput, power);
 }
 
-void CatapultSystem::firePiston()
+void CatapultSystem::FirePiston()
 {
 	releasePiston->Set(DoubleSolenoid::kReverse);
 }
 
-void CatapultSystem::resetPiston()
+void CatapultSystem::ResetPiston()
 {
 	releasePiston->Set(DoubleSolenoid::kForward);
+}
+
+bool CatapultSystem::GetLimitSwitch()
+{
+	return catapultLimit->Get();
 }
