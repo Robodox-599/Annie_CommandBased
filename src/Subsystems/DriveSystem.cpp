@@ -14,10 +14,10 @@ DriveSystem::DriveSystem() : Subsystem("DriveSystem") {
 	frontRightMotor = new TalonSRX(0);
 	rearRightMotor = new TalonSRX(1);
 
-	frontLeftMotor->SetInverted(false);
-	rearLeftMotor->SetInverted(false);
-	frontRightMotor->SetInverted(true);
-	rearRightMotor->SetInverted(true);
+	frontLeftMotor->SetInverted(true);
+	rearLeftMotor->SetInverted(true);
+	frontRightMotor->SetInverted(false);
+	rearRightMotor->SetInverted(false);
 }
 
 void DriveSystem::InitDefaultCommand() {
@@ -34,20 +34,50 @@ void DriveSystem::JoystickDrive(double x, double y)
 	double r;
 	double max;
 
-	if(y<=0)
-		{l=-y+x; r=-y-x;}
+	if(y > 0.2)
+	{
+		y = (y-0.2)*1/.8;
+	}
+	else if(y < -0.2)
+	{
+		y = (y+0.2)*1/.8;
+	}
 	else
-		{l= -y-x; r=-y+x;}
+	{
+		y = 0;
+	}
+
+	if(x > 0.2)
+	{
+		x = (x-0.2)*1/.8;
+	}
+	else if(x < -0.2)
+	{
+		x = (x+0.2)*1/.8;
+	}
+	else
+	{
+		x = 0;
+	}
+
+
+//	if(y<=0)
+//		{l=-y-x; r=-y+x;}
+//	else
+//		{l= -y+x; r=-y-x;}
+
+	l = -y+x;
+	r = -y-x;
 
 	max=abs(l);
 	if(max<abs(r)) max=abs(r);
 
 	if(max>1) {l/=max; r/=max;}
 
-	//frontLeftMotor->Set(ControlMode::PercentOutput, l);
+	frontLeftMotor->Set(ControlMode::PercentOutput, l);
 	rearLeftMotor->Set(ControlMode::PercentOutput, l);
-	//frontRightMotor->Set(ControlMode::PercentOutput, r);
-	//rearRightMotor->Set(ControlMode::PercentOutput, r);
+	frontRightMotor->Set(ControlMode::PercentOutput, r);
+	rearRightMotor->Set(ControlMode::PercentOutput, r);
 }
 
 

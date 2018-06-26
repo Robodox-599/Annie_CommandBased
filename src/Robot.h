@@ -13,6 +13,7 @@
 #include <Commands/ForwardThenReverse.h>
 #include <Commands/DriveByJoystick.h>
 #include <Commands/Pause.h>
+#include <Commands/CatapultReset.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
 

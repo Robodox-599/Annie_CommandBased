@@ -5,37 +5,39 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "IntakeDown.h"
+#include "IntakeTimedRoll.h"
 #include "../Robot.h"
 
-IntakeDown::IntakeDown() {
+IntakeTimedRoll::IntakeTimedRoll(float timeout) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::intakeSystem);
+	seconds = timeout;
 }
 
 // Called just before this Command runs the first time
-void IntakeDown::Initialize() {
-	Robot::intakeSystem->IntakeDown();
+void IntakeTimedRoll::Initialize() {
+	Robot::intakeSystem->IntakeRoll(1);
+	SetTimeout(seconds);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void IntakeDown::Execute() {
+void IntakeTimedRoll::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool IntakeDown::IsFinished() {
-	return true;
+bool IntakeTimedRoll::IsFinished() {
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
-void IntakeDown::End() {
-
+void IntakeTimedRoll::End() {
+	Robot::intakeSystem->IntakeRoll(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void IntakeDown::Interrupted() {
+void IntakeTimedRoll::Interrupted() {
 	End();
 }

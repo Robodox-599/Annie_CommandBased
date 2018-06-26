@@ -25,5 +25,6 @@ public:
 	void ResetPiston();
 	void FirePiston();
 	bool GetLimitSwitch();
+	bool PistonPosition();
 };
 

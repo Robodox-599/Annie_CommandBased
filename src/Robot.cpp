@@ -14,12 +14,14 @@ DriveSystem* Robot::driveSystem = new DriveSystem();
 CatapultSystem* Robot::catapultSystem = new CatapultSystem();
 IntakeSystem* Robot::intakeSystem = new IntakeSystem();
 OI* Robot::oi = new OI();
+Compressor *comp599 = new Compressor();
+Command* teleopInitCommand;
 
 void Robot::RobotInit() {
 	printf("-- RobotInit()\n");
 	//driveSystem = new DriveSystem();
 	//oi = new OI();
-
+	comp599->SetClosedLoopControl(true);
 	m_chooser.AddDefault("Nothing", nullptr);
 	m_chooser.AddObject("FWD Two Seconds", new ForwardMotor(2.0));
 	m_chooser.AddObject("REV Two Seconds", new ReverseMotor(2.0));
@@ -89,6 +91,7 @@ void Robot::TeleopInit() {
 		m_autoCommand = nullptr;
 	}
 
+	teleopInitCommand = new CatapultReset();
 	DriveByJoystick* teleopDrive = new DriveByJoystick();
 
 	printf("-- TeleopInit()\n");
@@ -96,6 +99,7 @@ void Robot::TeleopInit() {
 
 	printf("-- Start Command\n");
 	teleopDrive->Start();
+	teleopInitCommand->Start();
 }
 
 void Robot::TeleopPeriodic() {

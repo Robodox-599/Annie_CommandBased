@@ -9,13 +9,15 @@
 
 #include <Commands/Command.h>
 
-class CatapultReset : public frc::Command {
+class IntakeTimedRoll : public frc::Command {
 public:
-	CatapultReset();
+	IntakeTimedRoll(float timeout);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+private:
+	float seconds;
 };
 

@@ -42,3 +42,15 @@ bool CatapultSystem::GetLimitSwitch()
 {
 	return catapultLimit->Get();
 }
+
+bool CatapultSystem::PistonPosition()
+{
+	if(releasePiston->Get() == 1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}

@@ -6,10 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 #include "IntakeSystem.h"
+#include <CTRE/Phoenix.h>
+#include <WPILib.h>
 #include "../RobotMap.h"
 
 IntakeSystem::IntakeSystem() : Subsystem("IntakeSystem") {
-
+	intakeRoller = new TalonSRX(2);
+	intakePiston = new DoubleSolenoid(4, 7);
 }
 
 void IntakeSystem::InitDefaultCommand() {
@@ -22,15 +25,27 @@ void IntakeSystem::InitDefaultCommand() {
 
 void IntakeSystem::IntakeDown()
 {
-
+	intakePiston->Set(DoubleSolenoid::kForward);
 }
 
 void IntakeSystem::IntakeUp()
 {
-
+	intakePiston->Set(DoubleSolenoid::kReverse);
 }
 
-void IntakeSystem::IntakeRoll()
+void IntakeSystem::IntakeRoll(float power)
 {
+	intakeRoller->Set(ControlMode::PercentOutput, power);
+}
 
+bool IntakeSystem::IntakePosition()
+{
+	if(intakePiston->Get() == 1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

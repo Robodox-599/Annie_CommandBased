@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class CatapultReset : public frc::Command {
+class IntakeRoll : public frc::Command {
 public:
-	CatapultReset();
+	IntakeRoll();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

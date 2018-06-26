@@ -7,15 +7,9 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/CommandGroup.h>
 
-class CatapultReset : public frc::Command {
+class IntakeDownAndRoll : public frc::CommandGroup {
 public:
-	CatapultReset();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+	IntakeDownAndRoll();
 };
-
