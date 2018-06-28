@@ -7,24 +7,17 @@
 
 #pragma once
 
-#include <Commands/Subsystem.h>
-#include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <Commands/Command.h>
 
-class DriveSystem : public frc::Subsystem {
-private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-	TalonSRX* frontLeftMotor;
-	TalonSRX* rearLeftMotor;
-	TalonSRX* frontRightMotor;
-	TalonSRX* rearRightMotor;
-
+class AutoTurn : public frc::Command {
 public:
-	DriveSystem();
-	void InitDefaultCommand() override;
-	void JoystickDrive(double x, double y);
-	void AutoTurn(float power);
+	AutoTurn(double time);
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
+private:
+	double seconds;
 };
-
 

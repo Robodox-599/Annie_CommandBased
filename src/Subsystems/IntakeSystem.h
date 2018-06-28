@@ -13,7 +13,6 @@
 
 class IntakeSystem : public frc::Subsystem {
 private:
-	TalonSRX* intakeRoller;
 	DoubleSolenoid* intakePiston;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -23,7 +22,6 @@ public:
 	void InitDefaultCommand() override;
 	void IntakeDown();
 	void IntakeUp();
-	void IntakeRoll(float power);
 	bool IntakePosition();
 };
 

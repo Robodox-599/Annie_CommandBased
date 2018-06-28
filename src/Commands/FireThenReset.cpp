@@ -8,6 +8,7 @@
 #include "FireThenReset.h"
 #include "Fire.h"
 #include "CatapultReset.h"
+#include "IntakeUp.h"
 #include "Pause.h"
 
 FireThenReset::FireThenReset() {
@@ -29,5 +30,6 @@ FireThenReset::FireThenReset() {
 	// arm.
 	AddSequential(new Fire());
 	AddSequential(new Pause(.5));
-	AddSequential(new CatapultReset());
+	AddParallel(new CatapultReset());
+	AddSequential(new IntakeUp());
 }

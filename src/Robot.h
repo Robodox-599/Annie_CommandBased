@@ -21,12 +21,14 @@
 #include "Subsystems/DriveSystem.h"
 #include "Subsystems/CatapultSystem.h"
 #include "Subsystems/IntakeSystem.h"
+#include "Subsystems/IntakeRollerSystem.h"
 
 class Robot : public frc::TimedRobot {
 public:
 	static DriveSystem* driveSystem;
 	static CatapultSystem* catapultSystem;
 	static IntakeSystem* intakeSystem;
+	static IntakeRollerSystem* intakeRollerSystem;
 	static OI* oi;
 
 	void RobotInit() override;

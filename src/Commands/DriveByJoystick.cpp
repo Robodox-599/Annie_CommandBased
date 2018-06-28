@@ -24,7 +24,7 @@ void DriveByJoystick::Execute() {
 
 //	double x = Robot::m_oi.getJoystick()->GetRawAxis(0);
 //	double y = Robot::m_oi.getJoystick()->GetRawAxis(1);
-	Robot::driveSystem->JoystickDrive(Robot::oi->joy->GetRawAxis(0), Robot::oi->joy->GetRawAxis(1));
+	Robot::driveSystem->JoystickDrive(Robot::oi->joy->GetRawAxis(4), Robot::oi->joy->GetRawAxis(1));
 
 	frc::SmartDashboard::PutNumber("Joy Y", Robot::oi->joy->GetRawAxis(1));
 }

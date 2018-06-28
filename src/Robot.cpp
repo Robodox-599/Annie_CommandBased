@@ -13,6 +13,7 @@
 DriveSystem* Robot::driveSystem = new DriveSystem();
 CatapultSystem* Robot::catapultSystem = new CatapultSystem();
 IntakeSystem* Robot::intakeSystem = new IntakeSystem();
+IntakeRollerSystem* Robot::intakeRollerSystem = new IntakeRollerSystem();
 OI* Robot::oi = new OI();
 Compressor *comp599 = new Compressor();
 Command* teleopInitCommand;

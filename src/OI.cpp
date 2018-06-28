@@ -14,6 +14,7 @@
 #include <Commands/IntakeDownAndRoll.h>
 #include <Commands/CatapultReset.h>
 #include <Commands/IntakeRoll.h>
+#include <Commands/AutoTurn.h>
 
 
 OI::OI() {
@@ -23,11 +24,13 @@ OI::OI() {
 	JoystickButton* Button3 = new JoystickButton(joy, 3);
 	JoystickButton* Button4 = new JoystickButton(joy, 4);
 	JoystickButton* Button6 = new JoystickButton(joy, 6);
+	JoystickButton* Button7 = new JoystickButton(joy, 7);
 
 	Button1->WhenPressed(new FireThenReset());
 	Button2->WhenPressed(new IntakeDownAndRoll());
 	Button3->WhenPressed(new IntakeUp());
 	Button4->WhenPressed(new IntakeRollThenDown());
 	Button6->WhenPressed(new Fire());
+	Button7->WhenPressed(new AutoTurn(1));
 	// Process operator interface input here.
 }

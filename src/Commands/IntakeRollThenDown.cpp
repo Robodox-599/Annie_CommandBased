@@ -26,7 +26,7 @@ IntakeRollThenDown::IntakeRollThenDown() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new IntakeTimedRoll(0.5));
+	AddParallel(new IntakeTimedRoll(0.2));
 	AddSequential(new IntakeDown());
 
 }

@@ -11,20 +11,15 @@
 #include <CTRE/Phoenix.h>
 #include <WPILib.h>
 
-class DriveSystem : public frc::Subsystem {
+class IntakeRollerSystem : public frc::Subsystem {
 private:
+	TalonSRX* intakeRoller;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	TalonSRX* frontLeftMotor;
-	TalonSRX* rearLeftMotor;
-	TalonSRX* frontRightMotor;
-	TalonSRX* rearRightMotor;
 
 public:
-	DriveSystem();
+	IntakeRollerSystem();
 	void InitDefaultCommand() override;
-	void JoystickDrive(double x, double y);
-	void AutoTurn(float power);
+	void IntakeRoll(float power);
 };
-
 

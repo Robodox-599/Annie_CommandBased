@@ -5,16 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "IntakeSystem.h"
 #include <CTRE/Phoenix.h>
+#include <Subsystems/IntakeRollerSystem.h>
 #include <WPILib.h>
 #include "../RobotMap.h"
 
-IntakeSystem::IntakeSystem() : Subsystem("IntakeSystem") {;
-	intakePiston = new DoubleSolenoid(4, 7);
+IntakeRollerSystem::IntakeRollerSystem() : Subsystem("IntakeRollerSystem") {
+	intakeRoller = new TalonSRX(2);
 }
 
-void IntakeSystem::InitDefaultCommand() {
+void IntakeRollerSystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
 }
@@ -22,24 +22,7 @@ void IntakeSystem::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void IntakeSystem::IntakeDown()
+void IntakeRollerSystem::IntakeRoll(float power)
 {
-	intakePiston->Set(DoubleSolenoid::kForward);
-}
-
-void IntakeSystem::IntakeUp()
-{
-	intakePiston->Set(DoubleSolenoid::kReverse);
-}
-
-bool IntakeSystem::IntakePosition()
-{
-	if(intakePiston->Get() == 1)
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+	intakeRoller->Set(ControlMode::PercentOutput, power);
 }
