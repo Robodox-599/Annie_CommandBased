@@ -9,11 +9,11 @@
 
 #include <Commands/Subsystem.h>
 #include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
 
 class IntakeSystem : public frc::Subsystem {
 private:
-	DoubleSolenoid* intakePiston;
+	frc::DoubleSolenoid intakePiston;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 

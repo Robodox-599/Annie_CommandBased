@@ -7,11 +7,12 @@
 
 #include "IntakeSystem.h"
 #include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
 #include "../RobotMap.h"
+using namespace frc;
 
-IntakeSystem::IntakeSystem() : Subsystem("IntakeSystem") {;
-	intakePiston = new DoubleSolenoid(4, 7);
+
+IntakeSystem::IntakeSystem() : Subsystem("IntakeSystem"), intakePiston(4, 7) {
 }
 
 void IntakeSystem::InitDefaultCommand() {
@@ -24,17 +25,17 @@ void IntakeSystem::InitDefaultCommand() {
 
 void IntakeSystem::IntakeDown()
 {
-	intakePiston->Set(DoubleSolenoid::kForward);
+	intakePiston.Set(DoubleSolenoid::kForward);
 }
 
 void IntakeSystem::IntakeUp()
 {
-	intakePiston->Set(DoubleSolenoid::kReverse);
+	intakePiston.Set(DoubleSolenoid::kReverse);
 }
 
 bool IntakeSystem::IntakePosition()
 {
-	if(intakePiston->Get() == 1)
+	if(intakePiston.Get() == 1)
 	{
 		return false;
 	}

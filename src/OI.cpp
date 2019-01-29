@@ -15,16 +15,16 @@
 #include <Commands/CatapultReset.h>
 #include <Commands/IntakeRoll.h>
 #include <Commands/AutoTurn.h>
+using namespace frc;
 
+OI::OI(): joy(0) {
 
-OI::OI() {
-	joy = new Joystick(0);
-	JoystickButton* Button1 = new JoystickButton(joy, 1);
-	JoystickButton* Button2 = new JoystickButton(joy, 2);
-	JoystickButton* Button3 = new JoystickButton(joy, 3);
-	JoystickButton* Button4 = new JoystickButton(joy, 4);
-	JoystickButton* Button6 = new JoystickButton(joy, 6);
-	JoystickButton* Button7 = new JoystickButton(joy, 7);
+	JoystickButton* Button1 = new JoystickButton(&joy, 1);
+	JoystickButton* Button2 = new JoystickButton(&joy, 2);
+	JoystickButton* Button3 = new JoystickButton(&joy, 3);
+	JoystickButton* Button4 = new JoystickButton(&joy, 4);
+	JoystickButton* Button6 = new JoystickButton(&joy, 6);
+	JoystickButton* Button7 = new JoystickButton(&joy, 7);
 
 	Button1->WhenPressed(new FireThenReset());
 	Button2->WhenPressed(new IntakeDownAndRoll());

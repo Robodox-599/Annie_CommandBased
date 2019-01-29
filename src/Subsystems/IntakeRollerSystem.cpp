@@ -7,11 +7,10 @@
 
 #include <CTRE/Phoenix.h>
 #include <Subsystems/IntakeRollerSystem.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
 #include "../RobotMap.h"
 
-IntakeRollerSystem::IntakeRollerSystem() : Subsystem("IntakeRollerSystem") {
-	intakeRoller = new TalonSRX(2);
+IntakeRollerSystem::IntakeRollerSystem() : Subsystem("IntakeRollerSystem"), intakeRoller(2) {
 }
 
 void IntakeRollerSystem::InitDefaultCommand() {
@@ -24,5 +23,5 @@ void IntakeRollerSystem::InitDefaultCommand() {
 
 void IntakeRollerSystem::IntakeRoll(float power)
 {
-	intakeRoller->Set(ControlMode::PercentOutput, power);
+	intakeRoller.Set(ControlMode::PercentOutput, power);
 }

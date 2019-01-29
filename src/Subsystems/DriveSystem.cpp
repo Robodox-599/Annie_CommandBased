@@ -6,19 +6,16 @@
 /*----------------------------------------------------------------------------*/
 
 #include "DriveSystem.h"
-#include "Commands/DriveByJoystick.h"
+#include "commands/DriveByJoystick.h"
 #include "../RobotMap.h"
 
-DriveSystem::DriveSystem() : Subsystem("DriveSystem") {
-	frontLeftMotor = new TalonSRX(4);
-	rearLeftMotor = new TalonSRX(5);
-	frontRightMotor = new TalonSRX(0);
-	rearRightMotor = new TalonSRX(1);
+DriveSystem::DriveSystem() : Subsystem("DriveSystem"), frontLeftMotor(4), rearLeftMotor(5), frontRightMotor(0), rearRightMotor(1){
 
-	frontLeftMotor->SetInverted(true);
-	rearLeftMotor->SetInverted(true);
-	frontRightMotor->SetInverted(false);
-	rearRightMotor->SetInverted(false);
+	frontLeftMotor.SetInverted(true);
+	rearLeftMotor.SetInverted(true);
+	frontRightMotor.SetInverted(false);
+	rearRightMotor.SetInverted(false);
+
 }
 
 void DriveSystem::InitDefaultCommand() {
@@ -75,18 +72,18 @@ void DriveSystem::JoystickDrive(double x, double y)
 
 	if(max>1) {l/=max; r/=max;}
 
-	frontLeftMotor->Set(ControlMode::PercentOutput, l);
-	rearLeftMotor->Set(ControlMode::PercentOutput, l);
-	frontRightMotor->Set(ControlMode::PercentOutput, r);
-	rearRightMotor->Set(ControlMode::PercentOutput, r);
+	frontLeftMotor.Set(ControlMode::PercentOutput, l);
+	rearLeftMotor.Set(ControlMode::PercentOutput, l);
+	frontRightMotor.Set(ControlMode::PercentOutput, r);
+	rearRightMotor.Set(ControlMode::PercentOutput, r);
 }
 
 void DriveSystem::AutoTurn(float power)
 {
-	frontLeftMotor->Set(ControlMode::PercentOutput, power);
-	rearLeftMotor->Set(ControlMode::PercentOutput, power);
-	frontRightMotor->Set(ControlMode::PercentOutput, -power);
-	rearRightMotor->Set(ControlMode::PercentOutput, -power);
+	frontLeftMotor.Set(ControlMode::PercentOutput, power);
+	rearLeftMotor.Set(ControlMode::PercentOutput, power);
+	frontRightMotor.Set(ControlMode::PercentOutput, -power);
+	rearRightMotor.Set(ControlMode::PercentOutput, -power);
 }
 
 

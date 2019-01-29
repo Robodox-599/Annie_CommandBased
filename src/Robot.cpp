@@ -9,20 +9,16 @@
 
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+using namespace frc;
 
-DriveSystem* Robot::driveSystem = new DriveSystem();
-CatapultSystem* Robot::catapultSystem = new CatapultSystem();
-IntakeSystem* Robot::intakeSystem = new IntakeSystem();
-IntakeRollerSystem* Robot::intakeRollerSystem = new IntakeRollerSystem();
-OI* Robot::oi = new OI();
-Compressor *comp599 = new Compressor();
 Command* teleopInitCommand;
+Robot globalRobot;
 
 void Robot::RobotInit() {
 	printf("-- RobotInit()\n");
 	//driveSystem = new DriveSystem();
 	//oi = new OI();
-	comp599->SetClosedLoopControl(true);
+	comp599.SetClosedLoopControl(true);
 	m_chooser.AddDefault("Nothing", nullptr);
 	m_chooser.AddObject("FWD Two Seconds", new ForwardMotor(2.0));
 	m_chooser.AddObject("REV Two Seconds", new ReverseMotor(2.0));
@@ -109,4 +105,10 @@ void Robot::TeleopPeriodic() {
 
 void Robot::TestPeriodic() {}
 
-START_ROBOT_CLASS(Robot)
+//START_ROBOT_CLASS(Robot)
+
+int main()
+{
+	RunHALInitialization();
+	globalRobot.StartCompetition();
+}

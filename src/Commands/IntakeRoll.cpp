@@ -11,13 +11,13 @@
 
 IntakeRoll::IntakeRoll() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::intakeRollerSystem);
+	// eg. Requires(globalRobot.chassis.get());
+	Requires(&globalRobot.intakeRollerSystem);
 }
 
 // Called just before this Command runs the first time
 void IntakeRoll::Initialize() {
-	Robot::intakeRollerSystem->IntakeRoll(1);
+	globalRobot.intakeRollerSystem.IntakeRoll(1);
 	SetTimeout(4);
 }
 
@@ -33,7 +33,7 @@ bool IntakeRoll::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeRoll::End() {
-	Robot::intakeRollerSystem->IntakeRoll(0);
+	globalRobot.intakeRollerSystem.IntakeRoll(0);
 }
 
 // Called when another command which requires one or more of the same

@@ -11,7 +11,7 @@
 
 ForwardMotor::ForwardMotor(float secondsToRun) {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(Robot::driveSystem);
+	Requires(&globalRobot.driveSystem);
 
 	m_secondsToRun = secondsToRun;
 }
@@ -20,7 +20,7 @@ ForwardMotor::ForwardMotor(float secondsToRun) {
 void ForwardMotor::Initialize() {
 	printf("m_secondsToRun: %f", m_secondsToRun);
 	SetTimeout(m_secondsToRun); // Drive time in Seconds
-	Robot::driveSystem->JoystickDrive(0, .1);
+	globalRobot.driveSystem.JoystickDrive(0, .1);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -35,7 +35,7 @@ bool ForwardMotor::IsFinished() {
 
 // Called once after isFinished returns true
 void ForwardMotor::End() {
-	Robot::driveSystem->JoystickDrive(0, 0);
+	globalRobot.driveSystem.JoystickDrive(0, 0);
 }
 
 // Called when another command which requires one or more of the same

@@ -10,14 +10,14 @@
 
 IntakeTimedRoll::IntakeTimedRoll(float timeout) {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::intakeRollerSystem);
+	// eg. Requires(globalRobot.chassis.get());
+	Requires(&globalRobot.intakeRollerSystem);
 	seconds = timeout;
 }
 
 // Called just before this Command runs the first time
 void IntakeTimedRoll::Initialize() {
-	Robot::intakeRollerSystem->IntakeRoll(0.3);
+	globalRobot.intakeRollerSystem.IntakeRoll(0.3);
 	SetTimeout(seconds);
 }
 
@@ -33,7 +33,7 @@ bool IntakeTimedRoll::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeTimedRoll::End() {
-	Robot::intakeRollerSystem->IntakeRoll(0);
+	globalRobot.intakeRollerSystem.IntakeRoll(0);
 }
 
 // Called when another command which requires one or more of the same

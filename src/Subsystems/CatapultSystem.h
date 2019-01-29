@@ -9,15 +9,16 @@
 
 #include <Commands/Subsystem.h>
 #include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
+
 
 class CatapultSystem: public frc::Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	TalonSRX* winchMotor;
-	DoubleSolenoid* releasePiston;
-	DigitalInput* catapultLimit;
+	TalonSRX winchMotor;
+	frc::DoubleSolenoid releasePiston;
+	frc::DigitalInput catapultLimit;
 public:
 	CatapultSystem();
 	void InitDefaultCommand() override;

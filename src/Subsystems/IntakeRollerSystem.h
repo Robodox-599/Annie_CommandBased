@@ -9,11 +9,11 @@
 
 #include <Commands/Subsystem.h>
 #include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
 
 class IntakeRollerSystem : public frc::Subsystem {
 private:
-	TalonSRX* intakeRoller;
+	TalonSRX intakeRoller;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 

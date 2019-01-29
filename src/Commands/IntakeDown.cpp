@@ -10,13 +10,13 @@
 
 IntakeDown::IntakeDown() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::intakeSystem);
+	// eg. Requires(globalRobot.chassis.get());
+	Requires(&globalRobot.intakeSystem);
 }
 
 // Called just before this Command runs the first time
 void IntakeDown::Initialize() {
-	Robot::intakeSystem->IntakeDown();
+	globalRobot.intakeSystem.IntakeDown();
 }
 
 // Called repeatedly when this Command is scheduled to run

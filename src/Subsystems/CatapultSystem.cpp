@@ -7,13 +7,12 @@
 
 #include <Subsystems/CatapultSystem.h>
 #include <CTRE/Phoenix.h>
-#include <WPILib.h>
+#include <frc/WPILib.h>
 #include "../RobotMap.h"
 
-CatapultSystem::CatapultSystem() : Subsystem("CatapultSystem") {
-	winchMotor = new TalonSRX(3);
-	releasePiston = new DoubleSolenoid(5, 6);
-	catapultLimit = new DigitalInput(8);
+using namespace frc;
+
+CatapultSystem::CatapultSystem() : Subsystem("CatapultSystem"), winchMotor(3), releasePiston(5, 6), catapultLimit(8) {
 }
 
 void CatapultSystem::InitDefaultCommand() {
@@ -25,27 +24,27 @@ void CatapultSystem::InitDefaultCommand() {
 // here. Call these from Commands.
 void CatapultSystem::PullBack(float power)
 {
-	winchMotor->Set(ControlMode::PercentOutput, power);
+	winchMotor.Set(ControlMode::PercentOutput, power);
 }
 
 void CatapultSystem::FirePiston()
 {
-	releasePiston->Set(DoubleSolenoid::kReverse);
+	releasePiston.Set(DoubleSolenoid::kReverse);
 }
 
 void CatapultSystem::ResetPiston()
 {
-	releasePiston->Set(DoubleSolenoid::kForward);
+	releasePiston.Set(DoubleSolenoid::kForward);
 }
 
 bool CatapultSystem::GetLimitSwitch()
 {
-	return catapultLimit->Get();
+	return catapultLimit.Get();
 }
 
 bool CatapultSystem::PistonPosition()
 {
-	if(releasePiston->Get() == 1)
+	if(releasePiston.Get() == 1)
 	{
 		return false;
 	}

@@ -10,14 +10,14 @@
 
 AutoTurn::AutoTurn(double time) {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::driveSystem);
+	// eg. Requires(globalRobot.chassis.get());
+	Requires(&globalRobot.driveSystem);
 	seconds = time;
 }
 
 // Called just before this Command runs the first time
 void AutoTurn::Initialize() {
-	Robot::driveSystem->AutoTurn(0.5);
+	globalRobot.driveSystem.AutoTurn(0.5);
 	SetTimeout(seconds);
 }
 
@@ -33,7 +33,7 @@ bool AutoTurn::IsFinished() {
 
 // Called once after isFinished returns true
 void AutoTurn::End() {
-	Robot::driveSystem->AutoTurn(0);
+	globalRobot.driveSystem.AutoTurn(0);
 }
 
 // Called when another command which requires one or more of the same

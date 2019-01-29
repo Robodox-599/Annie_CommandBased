@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ReverseMotor.h"
+#include "commands/ReverseMotor.h"
 
-#include "../Robot.h"
+#include "Robot.h"
 
 ReverseMotor::ReverseMotor(float secondsToRun) {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(Robot::driveSystem);
+	Requires(&globalRobot.driveSystem);
 
 	m_secondsToRun = secondsToRun;
 }
@@ -20,7 +20,7 @@ ReverseMotor::ReverseMotor(float secondsToRun) {
 void ReverseMotor::Initialize() {
 	printf("m_secondsToRun: %f", m_secondsToRun);
 	SetTimeout(m_secondsToRun); // Drive time in Seconds
-	Robot::driveSystem->JoystickDrive(0, -0.1);
+	globalRobot.driveSystem.JoystickDrive(0, -0.1);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -34,7 +34,7 @@ bool ReverseMotor::IsFinished() {
 
 // Called once after isFinished returns true
 void ReverseMotor::End() {
-	Robot::driveSystem->JoystickDrive(0, 0);
+	globalRobot.driveSystem.JoystickDrive(0, 0);
 }
 
 // Called when another command which requires one or more of the same

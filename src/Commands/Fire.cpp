@@ -10,13 +10,13 @@
 
 Fire::Fire() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::catapultSystem);
+	// eg. Requires(globalRobot.chassis.get());
+	Requires(&globalRobot.catapultSystem);
 }
 
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-	Robot::catapultSystem->FirePiston();
+	globalRobot.catapultSystem.FirePiston();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -26,7 +26,7 @@ void Fire::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {
-	return Robot::catapultSystem->PistonPosition();
+	return globalRobot.catapultSystem.PistonPosition();
 }
 
 // Called once after isFinished returns true

@@ -15,7 +15,8 @@
 #include <Commands/Pause.h>
 #include <Commands/CatapultReset.h>
 #include <SmartDashboard/SendableChooser.h>
-#include <TimedRobot.h>
+#include <frc/TimedRobot.h>
+#include <frc/WPILib.h>
 
 #include "OI.h"
 #include "Subsystems/DriveSystem.h"
@@ -25,11 +26,13 @@
 
 class Robot : public frc::TimedRobot {
 public:
-	static DriveSystem* driveSystem;
-	static CatapultSystem* catapultSystem;
-	static IntakeSystem* intakeSystem;
-	static IntakeRollerSystem* intakeRollerSystem;
-	static OI* oi;
+	 CatapultSystem catapultSystem;
+	 DriveSystem driveSystem;
+	 IntakeSystem intakeSystem;
+	 IntakeRollerSystem intakeRollerSystem;
+	 OI oi;
+	 frc::Compressor comp599;
+
 
 	void RobotInit() override;
 	void DisabledInit() override;
@@ -48,3 +51,5 @@ private:
 
 	//std::unique_ptr<frc::Command> m_driveByJoystick;
 };
+
+extern Robot globalRobot;
